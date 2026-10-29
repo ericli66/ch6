@@ -4,7 +4,7 @@ public class PigLatin{
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         String str = in.nextLine();
-        System.out.println(pigLatin(str));
+        System.out.println(split(str));
     }
 
     public static String pigLatin(String str) {
@@ -21,8 +21,12 @@ public class PigLatin{
 		String r = "";
 		while(str.indexOf(" ") != -1){
 			int space = str.indexOf(" ");
-			String word;
+			String word = str.substring(0, space);
+			
+			r = r + pigLatin(word) + " ";
+			str = str.substring(space + 1);
 		}
+		r = r + pigLatin(str);
 		return r;
 	}
 }
